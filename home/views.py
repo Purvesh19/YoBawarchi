@@ -30,7 +30,7 @@ def login(request):
 def callback(request):
     token = oauth.auth0.authorize_access_token(request)
     request.session["user"] = token
-    return redirect(request.build_absolute_uri(reverse("home")))
+    return redirect(request.build_absolute_uri(reverse("dashboard")))
 
 def logout(request):
     request.session.clear()
@@ -60,7 +60,7 @@ def profile(request):
     return render(request, 'profile.html')
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'dashboard.html')
 
 def offer(request):
     return render(request, 'offer.html')
@@ -79,6 +79,12 @@ def orderhistory(request):
 
 def profile_management(request):
     return render(request, 'profile_management.html')
+
+def loyalty(request):
+    return render(request, 'loyalty.html')
+
+def dashboard(request):
+    return render(request, 'dashboard.html')
 
 
 oauth = OAuth()
